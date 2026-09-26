@@ -190,10 +190,8 @@ export const RecordPartyPaymentModal: React.FC<RecordPartyPaymentModalProps> = (
       setError('Please select a party/customer.');
       return;
     }
-    if (companies.length > 0 && !companyId) {
-      setError('Please select the related company for this payment.');
-      return;
-    }
+
+
     const numAmount = Number(amount);
     if (!numAmount || numAmount <= 0) {
       setError('Please enter a valid payment amount greater than zero.');
@@ -216,8 +214,7 @@ export const RecordPartyPaymentModal: React.FC<RecordPartyPaymentModalProps> = (
         id: editingPayment ? editingPayment.id : generateId(),
         partyId,
         partyName: selectedParty.name,
-        companyId: companyId || undefined,
-        companyName: selectedCompany ? selectedCompany.name : undefined,
+        // company linkage omitted - Party payment independent
         invoiceId: invoiceId || undefined,
         invoiceNumber: selectedInvoice ? selectedInvoice.invoiceNumber : undefined,
         date: date || getTodayDateString(),
@@ -266,16 +263,10 @@ export const RecordPartyPaymentModal: React.FC<RecordPartyPaymentModalProps> = (
             </div>
           )}
 
-          {/* Connected Ledgers Notice */}
-          <div className="flex items-start p-2.5 bg-emerald-50/80 border border-emerald-200/80 rounded-lg text-xs text-emerald-950">
-            <Building2 className="w-4 h-4 text-emerald-600 mr-2 shrink-0 mt-0.5" />
-            <span>
-              This payment reduces the <strong>Party's Amount Due</strong> and is recorded under the linked <strong>Company Ledger</strong>.
-            </span>
-          </div>
+          {/* Notice: Party payments are independent from Company ledger */}
 
           {/* Company Selection */}
-          {companies.length > 0 && (
+          {false && (
             <div>
               <label className="block text-xs font-semibold text-slate-700 mb-1">
                 Company / Supplier <span className="text-red-500">*</span>

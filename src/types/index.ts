@@ -27,8 +27,8 @@ export interface PartyPayment {
   id: string;
   partyId: string;
   partyName: string;
-  companyId?: string;
-  companyName?: string;
+
+
   invoiceId?: string;
   invoiceNumber?: string;
   date: string; // YYYY-MM-DD

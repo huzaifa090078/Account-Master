@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.smarttech.ledger',
+  appId: 'com.smarttech.accountmaster',
   appName: 'Login Smart Technology Ledger',
   webDir: 'dist',
   server: {

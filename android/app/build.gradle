@@ -11,10 +11,10 @@ def ledgerKeystorePassword = localProperties.getProperty('LEDGER_KEYSTORE_PASSWO
 def ledgerKeyPassword = localProperties.getProperty('LEDGER_KEY_PASSWORD') ?: System.getenv('LEDGER_KEY_PASSWORD') ?: ''
 
 android {
-    namespace "com.smarttech.ledger"
+    namespace "com.smarttech.accountmaster"
     compileSdk rootProject.ext.compileSdkVersion
     defaultConfig {
-        applicationId "com.smarttech.ledger"
+        applicationId "com.smarttech.accountmaster"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 8
@@ -27,12 +27,12 @@ android {
         }
     }
     signingConfigs {
-        ledgerConfig {
-            if (ledgerKeystoreFile.exists()) {
-                storeFile ledgerKeystoreFile
-                storePassword ledgerKeystorePassword
-                keyAlias 'ledger'
-                keyPassword ledgerKeyPassword
+        accountmasterConfig {
+            if (accountmasterKeystoreFile.exists()) {
+                storeFile accountmasterKeystoreFile
+                storePassword accountmasterKeystorePassword
+                keyAlias 'accountmaster'
+                keyPassword accountmasterKeyPassword
                 v1SigningEnabled true
                 v2SigningEnabled true
             }
